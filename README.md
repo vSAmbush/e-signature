@@ -52,14 +52,14 @@ make run
 ### Step 3
 
 By default, the application use `8012` port for hosting and `3409` port for MySQL database.
-So the proper url for using the project would be `http:e-signature.local:8012`.
+So the proper url for using the project would be `http://e-signature.local:8012`.
 
 If the app is not running - please change these ports in the `.env` file
 or kill the processes that are using the ports.
 
 ## Documentation
 
-- Swagger documentation has an access by the url `http:e-signature.local:8012/api/documentation`
+- Swagger documentation has an access by the url `http://e-signature.local:8012/api/documentation`
 - Postman documentation json collection is located in `./storate/postman`.
 It is possible to import this file in the Postman Client (Web or Desktop)
 
