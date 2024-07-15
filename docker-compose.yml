@@ -1,0 +1,48 @@
+version: '3.9'
+
+services:
+    app:
+        build:
+            args:
+                user: docker-user
+                uid: 1000
+            context: ./
+            dockerfile: .docker/app/Dockerfile
+        image: e-sign-app
+        container_name: e-sign-app
+        restart: unless-stopped
+        volumes:
+            - ./:/var/www/e-signature
+        depends_on:
+            - mysql
+    mysql:
+        image: mysql:8.0
+        container_name: mysql
+        restart: unless-stopped
+        ports:
+            - ${DB_OUT_PORT}:3306
+        environment:
+            MYSQL_DATABASE: ${DB_DATABASE}
+            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+            MYSQL_PASSWORD: ${DB_PASSWORD}
+            MYSQL_USER: ${DB_USERNAME}
+        volumes:
+            - ./.docker/mysql:/docker-entrypoint-initdb.d
+            - mysql-data:/var/lib/mysql
+    nginx:
+        image: nginx:alpine
+        container_name: nginx
+        restart: unless-stopped
+        environment:
+            APP_URL: ${APP_URL}
+        ports:
+            - ${APP_PORT}:80
+        volumes:
+            - ./:/var/www/e-signature
+            - ./.docker/nginx/templates:/etc/nginx/templates
+        depends_on:
+            - app
+
+volumes:
+    mysql-data:
+        driver: local

@@ -1,0 +1,606 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "E-Signature",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://e-signature.local:8012"
+        }
+    ],
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "paths": {
+        "/user/register": {
+            "post": {
+                "tags": [
+                    "default"
+                ],
+                "summary": "Register user",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "example": {
+                                    "username": "admin",
+                                    "password": "adminadmin"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "headers": {
+                            "Server": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "nginx/1.27.0"
+                                }
+                            },
+                            "Content-Type": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "application/json"
+                                }
+                            },
+                            "Transfer-Encoding": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "chunked"
+                                }
+                            },
+                            "Connection": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "keep-alive"
+                                }
+                            },
+                            "X-Powered-By": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "PHP/8.2.21"
+                                }
+                            },
+                            "Cache-Control": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "no-cache, private"
+                                }
+                            },
+                            "Date": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "Mon, 15 Jul 2024 09:13:47 GMT"
+                                }
+                            },
+                            "X-RateLimit-Limit": {
+                                "schema": {
+                                    "type": "integer",
+                                    "example": "60"
+                                }
+                            },
+                            "X-RateLimit-Remaining": {
+                                "schema": {
+                                    "type": "integer",
+                                    "example": "58"
+                                }
+                            }
+                        },
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object"
+                                },
+                                "example": {
+                                    "data": {
+                                        "id": 8
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user/login": {
+            "post": {
+                "tags": [
+                    "default"
+                ],
+                "summary": "Login user",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "example": {
+                                    "username": "admin",
+                                    "password": "adminadmin"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                            "Server": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "nginx/1.27.0"
+                                }
+                            },
+                            "Content-Type": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "application/json"
+                                }
+                            },
+                            "Transfer-Encoding": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "chunked"
+                                }
+                            },
+                            "Connection": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "keep-alive"
+                                }
+                            },
+                            "X-Powered-By": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "PHP/8.2.21"
+                                }
+                            },
+                            "Cache-Control": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "no-cache, private"
+                                }
+                            },
+                            "Date": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "Mon, 15 Jul 2024 09:13:33 GMT"
+                                }
+                            },
+                            "X-RateLimit-Limit": {
+                                "schema": {
+                                    "type": "integer",
+                                    "example": "60"
+                                }
+                            },
+                            "X-RateLimit-Remaining": {
+                                "schema": {
+                                    "type": "integer",
+                                    "example": "59"
+                                }
+                            }
+                        },
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object"
+                                },
+                                "example": {
+                                    "data": {
+                                        "id": 7,
+                                        "username": "admin",
+                                        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI0IiwianRpIjoiYjgxMzdlMmI2MzEzMjFmNGZhYjllMzMxZDFiYWJjZDY2MWQ3ZGFlMTkwNDA2NjVlZWUzN2QwNGFmMTFmMmIyNjRlYTAxNDIwMjAwYzBhN2IiLCJpYXQiOjE3MjEwMzQ4MTMuMzI4NzQ2LCJuYmYiOjE3MjEwMzQ4MTMuMzI4NzQ5LCJleHAiOjE3NTI1NzA4MTMuMzA3MTM2LCJzdWIiOiI3Iiwic2NvcGVzIjpbXX0.Jy9OqrelqgRJzSxKt0fEDiFswgpgYQvXg7VzGdr7WGouZb_rET4E5Hd51FuzYZ3fcij-W4UQIbdoNlFDgrr3Fil7jOn_0qUU8Fv0F2wVALMo09b9P6HUYvIpgTyFuikMUwAlnc4_-MmjWHAhvk2zxHNkV3JyiudOalfo993HM0W9w7SQJnQyQfpZK27l4Nl1E1Ql4zA0lMNhsyhs2FS5h7olfQbOb4D5P3Ql16DgsnMNs0YLxFpa_M9-GGz_tdFrzspfHealvGBi-vifvYq8b_2Wcr7X782CZzEjByH02HBfMFgK0zcF2WxCOTgTmXA6tLbfkq0oFKsey1LQH3EbM1rtLHhaQ2vmTrrBw4EAVnEfrBwyvDOlD_xh2m79ARcwkdwbrxzacroRnPybFUsR7tuZPCrD7fmFzYgHp_oxeGpbrvZdsac1Oj5zEUbWNVPaAC0_hppMPOGffVbSnz8iv0z9eTpimmmvT1vRsy-__7lDtnOq1dRF_KS5L7D-BgN4y8uf7EUD6oM_eed9focXpv__sNQkbHoUoeNdG-p3SHNC06lk2QP5xOsa8-1mHKZjYekdJdiN6YZDES4ztkUvmqRUMjX9vZ9tF_nUXA3lSdggqVUM9bkgqz4p_e2R0o3E_wtXkL6Gc1GLfg9EhskdEdZ4HQPZMwPvDjjsLjutVAQ"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/file/upload": {
+            "post": {
+                "tags": [
+                    "default"
+                ],
+                "summary": "Upload file",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "file": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "application/json"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "headers": {
+                            "Server": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "nginx/1.27.0"
+                                }
+                            },
+                            "Content-Type": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "application/json"
+                                }
+                            },
+                            "Transfer-Encoding": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "chunked"
+                                }
+                            },
+                            "Connection": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "keep-alive"
+                                }
+                            },
+                            "X-Powered-By": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "PHP/8.2.21"
+                                }
+                            },
+                            "Cache-Control": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "no-cache, private"
+                                }
+                            },
+                            "Date": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "Mon, 15 Jul 2024 12:17:40 GMT"
+                                }
+                            },
+                            "X-RateLimit-Limit": {
+                                "schema": {
+                                    "type": "integer",
+                                    "example": "60"
+                                }
+                            },
+                            "X-RateLimit-Remaining": {
+                                "schema": {
+                                    "type": "integer",
+                                    "example": "58"
+                                }
+                            }
+                        },
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object"
+                                },
+                                "example": {
+                                    "data": {
+                                        "id": "3",
+                                        "name": "G4SeJG2kZfdb33OFTQS721TrYC0MyWL6liAcfJQi.pdf",
+                                        "file_name": "AccountDetail.pdf"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/document/add": {
+            "post": {
+                "tags": [
+                    "default"
+                ],
+                "summary": "Add document",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "example": {
+                                    "title": "Contract",
+                                    "file_id": 2
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "headers": {
+                            "Server": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "nginx/1.27.0"
+                                }
+                            },
+                            "Content-Type": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "application/json"
+                                }
+                            },
+                            "Transfer-Encoding": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "chunked"
+                                }
+                            },
+                            "Connection": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "keep-alive"
+                                }
+                            },
+                            "X-Powered-By": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "PHP/8.2.21"
+                                }
+                            },
+                            "Cache-Control": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "no-cache, private"
+                                }
+                            },
+                            "Date": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "Mon, 15 Jul 2024 08:51:54 GMT"
+                                }
+                            },
+                            "X-RateLimit-Limit": {
+                                "schema": {
+                                    "type": "integer",
+                                    "example": "60"
+                                }
+                            },
+                            "X-RateLimit-Remaining": {
+                                "schema": {
+                                    "type": "integer",
+                                    "example": "59"
+                                }
+                            }
+                        },
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object"
+                                },
+                                "example": {
+                                    "data": {
+                                        "id": 1,
+                                        "title": "Contract"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/signature-request": {
+            "post": {
+                "tags": [
+                    "default"
+                ],
+                "summary": "Create signature request",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "example": {
+                                    "document_id": 1,
+                                    "signatory_id": 8
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "headers": {
+                            "Server": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "nginx/1.27.0"
+                                }
+                            },
+                            "Content-Type": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "application/json"
+                                }
+                            },
+                            "Transfer-Encoding": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "chunked"
+                                }
+                            },
+                            "Connection": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "keep-alive"
+                                }
+                            },
+                            "X-Powered-By": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "PHP/8.2.21"
+                                }
+                            },
+                            "Cache-Control": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "no-cache, private"
+                                }
+                            },
+                            "Date": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "Mon, 15 Jul 2024 09:11:20 GMT"
+                                }
+                            },
+                            "X-RateLimit-Limit": {
+                                "schema": {
+                                    "type": "integer",
+                                    "example": "60"
+                                }
+                            },
+                            "X-RateLimit-Remaining": {
+                                "schema": {
+                                    "type": "integer",
+                                    "example": "58"
+                                }
+                            }
+                        },
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object"
+                                },
+                                "example": {
+                                    "data": {
+                                        "id": 2
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/document/sign": {
+            "patch": {
+                "tags": [
+                    "default"
+                ],
+                "summary": "Sign document",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "example": {
+                                    "document_id": 1
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "headers": {
+                            "Server": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "nginx/1.27.0"
+                                }
+                            },
+                            "Connection": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "keep-alive"
+                                }
+                            },
+                            "X-Powered-By": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "PHP/8.2.21"
+                                }
+                            },
+                            "Cache-Control": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "no-cache, private"
+                                }
+                            },
+                            "Date": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "Mon, 15 Jul 2024 12:16:11 GMT"
+                                }
+                            },
+                            "X-RateLimit-Limit": {
+                                "schema": {
+                                    "type": "integer",
+                                    "example": "60"
+                                }
+                            },
+                            "X-RateLimit-Remaining": {
+                                "schema": {
+                                    "type": "integer",
+                                    "example": "56"
+                                }
+                            }
+                        },
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "type": "string"
+                                },
+                                "example": null
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
